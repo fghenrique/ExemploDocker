@@ -1,0 +1,29 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  workflow_dispatch:
+  
+jobs:
+  build:    
+    runs-on:ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - uses: azure/docker-login@v1
+        with:
+            login-server: ghcr.io
+            username: ${{ secrets.GH_PACKAGES_USER }}
+            password: ${{ secrets.GH_PACKAGES_TOKEN }}
+            
+        - run: |
+            docker build -t ghcr.io/fghenrique/sample-docker/hello-world:latesr -f Dockerfile .
+            docker tag ghcr.io/fghenrique/sample-docker/hello-world:lastest ghcr.io/fghenrique/sample-docker/hello-world:${{ github.sha }}
+            
+        - run: |
+            docker push ghcr.io/fghenrique/sample-docker/hello-world:latest
+            docker push ghcr.io/fghenrique/sample-docker/hello-world:${{ github.sha }}
+          
