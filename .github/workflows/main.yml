@@ -15,15 +15,15 @@ jobs:
         
       - uses: azure/docker-login@v1
         with:
-            login-server: ghcr.io
-            username: ${{ secrets.GH_PACKAGES_USER }}
-            password: ${{ secrets.GH_PACKAGES_TOKEN }}
-            
-        - run: |
+           login-server: ghcr.io
+           username: ${{ secrets.GH_PACKAGES_USER }}
+           password: ${{ secrets.GH_PACKAGES_TOKEN }}            
+           
+      - run: |
             docker build -t ghcr.io/fghenrique/sample-docker/hello-world:latesr -f Dockerfile .
             docker tag ghcr.io/fghenrique/sample-docker/hello-world:lastest ghcr.io/fghenrique/sample-docker/hello-world:${{ github.sha }}
             
-        - run: |
+      - run: |
             docker push ghcr.io/fghenrique/sample-docker/hello-world:latest
             docker push ghcr.io/fghenrique/sample-docker/hello-world:${{ github.sha }}
           
