@@ -20,10 +20,10 @@ jobs:
            password: ${{ secrets.GH_PACKAGES_TOKEN }}            
            
       - run: |
-            docker build -t ghcr.io/fghenrique/ExemploDocker:latesr -f Dockerfile .
-            docker tag ghcr.io/fghenrique/ExemploDocker:lastest ghcr.io/fghenrique/ExemploDocker:${{ github.sha }}
+            docker build -t ghcr.io/fghenrique/ExemploDocker/testeDocker:latesr -f Dockerfile .
+            docker tag ghcr.io/fghenrique/ExemploDocker/testeDocker:lastest ghcr.io/fghenrique/ExemploDocker/testeDocker:${{ github.sha }}
             
       - run: |
-            docker push ghcr.io/fghenrique/ExemploDocker:latest
-            docker push ghcr.io/fghenrique/ExemploDocker:${{ github.sha }}
+            docker push ghcr.io/fghenrique/ExemploDocker/testeDocker:latest
+            docker push ghcr.io/fghenrique/ExemploDocker/testeDocker:${{ github.sha }}
           
