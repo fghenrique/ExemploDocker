@@ -20,10 +20,10 @@ jobs:
            password: ${{ secrets.GH_PACKAGES_TOKEN }}            
            
       - run: |
-            docker build -t ghcr.io/fghenrique/sample-docker/hello-world:latesr -f Dockerfile .
-            docker tag ghcr.io/fghenrique/sample-docker/hello-world:lastest ghcr.io/fghenrique/sample-docker/hello-world:${{ github.sha }}
+            docker build -t ghcr.io/socin-econect/environment-concentrador:latesr -f Dockerfile .
+            docker tag ghcr.io/socin-econect/environment-concentrador:lastest ghcr.io/socin-econect/environment-concentrador:${{ github.sha }}
             
       - run: |
-            docker push ghcr.io/fghenrique/sample-docker/hello-world:latest
-            docker push ghcr.io/fghenrique/sample-docker/hello-world:${{ github.sha }}
+            docker push ghcr.io/socin-econect/environment-concentrador:latest
+            docker push ghcr.io/socin-econect/environment-concentrador:${{ github.sha }}
           
