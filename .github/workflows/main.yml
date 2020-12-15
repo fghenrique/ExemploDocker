@@ -21,7 +21,7 @@ jobs:
            
       - run: |
             docker build -t ghcr.io/fghenrique/exemplo-docker/teste-docker:latest -f Dockerfile .
-            docker tag ghcr.io/fghenrique/exemplo-docker/teste-docker:latest ghcr.io/fghenrique/exemplo-docker/teste-docker:${{ github.sha }},10.20
+            docker tag ghcr.io/fghenrique/exemplo-docker/teste-docker:latest ghcr.io/fghenrique/exemplo-docker/teste-docker:10.20
             
       - run: |
             docker push ghcr.io/fghenrique/exemplo-docker/teste-docker:latest
